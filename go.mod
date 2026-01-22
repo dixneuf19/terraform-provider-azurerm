@@ -17,8 +17,8 @@ require (
 	github.com/google/go-cmp v0.7.0
 	github.com/google/uuid v1.6.0
 	github.com/hashicorp/go-azure-helpers v0.75.2-0.20260122123014-aa3ad08cde20
-	github.com/hashicorp/go-azure-sdk/data-plane v0.0.0-00010101000000-000000000000
-	github.com/hashicorp/go-azure-sdk/resource-manager v0.20260114.1164646
+	github.com/hashicorp/go-azure-sdk/data-plane v0.0.0-20260122130401-f2743f430eac
+	github.com/hashicorp/go-azure-sdk/resource-manager v0.20260114.1164647-0.20260122130401-f2743f430eac
 	github.com/hashicorp/go-azure-sdk/sdk v0.20260114.1164647-0.20260122123605-031eca810bae
 	github.com/hashicorp/go-cty v1.5.0
 	github.com/hashicorp/go-hclog v1.6.3
@@ -109,11 +109,3 @@ require (
 )
 
 go 1.25.5
-
-replace github.com/hashicorp/go-azure-sdk/resource-manager => ../go-azure-sdk/resource-manager
-
-replace github.com/hashicorp/go-azure-sdk/data-plane => ../go-azure-sdk/data-plane
-
-replace github.com/hashicorp/go-azure-sdk/sdk => ../go-azure-sdk/sdk
-
-replace github.com/hashicorp/go-azure-helpers => ../go-azure-helpers
