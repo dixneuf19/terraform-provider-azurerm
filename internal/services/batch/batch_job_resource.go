@@ -10,11 +10,11 @@ import (
 
 	"github.com/Azure/go-autorest/autorest/date"
 	"github.com/hashicorp/go-azure-helpers/lang/pointer"
-	batchaccount "github.com/hashicorp/go-azure-sdk/resource-manager/batch/2024-07-01/batchaccounts"
-	pool "github.com/hashicorp/go-azure-sdk/resource-manager/batch/2024-07-01/pools"
 	"github.com/hashicorp/go-azure-helpers/lang/response"
 	"github.com/hashicorp/go-azure-helpers/resourcemanager/location"
 	"github.com/hashicorp/go-azure-sdk/data-plane/batch/2022-01-01-15-0/jobs"
+	batchaccount "github.com/hashicorp/go-azure-sdk/resource-manager/batch/2024-07-01/batchaccounts"
+	pool "github.com/hashicorp/go-azure-sdk/resource-manager/batch/2024-07-01/pools"
 	"github.com/hashicorp/terraform-provider-azurerm/internal/sdk"
 	"github.com/hashicorp/terraform-provider-azurerm/internal/services/batch/parse"
 	"github.com/hashicorp/terraform-provider-azurerm/internal/services/batch/validate"
@@ -110,12 +110,12 @@ func (r BatchJobResource) Create() sdk.ResourceFunc {
 
 			accountId := batchaccount.NewBatchAccountID(poolId.SubscriptionId, poolId.ResourceGroupName, poolId.BatchAccountName)
 
-			account, err := metadata.Client.Batch.AccountClient.Get(ctx, accountId)
+			account, err := metadata.Client.Batch.AccountClient.BatchAccountGet(ctx, accountId)
 			if err != nil || account.Model == nil {
 				return err
 			}
 
-			loc := location.NormalizeNilable(account.Model.Location)
+			loc := location.Normalize(account.Model.Location)
 
 			client := metadata.Client.Batch.JobsDataPlaneClient
 
